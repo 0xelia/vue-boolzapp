@@ -2,3 +2,68 @@ html {
     font-family: 'Open Sans';
 }
 
+:root {
+    --icons_color: rgb(143, 142, 142);
+}
+
+ul,ol,menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+figure {
+    margin: 0;
+}
+
+main{
+    padding: 2rem 0;
+    height: 100vh;
+    background: rgb(55,201,69);
+    background: linear-gradient(180deg, rgb(51, 177, 63) 15%, rgba(219,219,219,1) 15%);
+}
+
+main p {
+    margin: 0;
+}
+
+.main_wrapper {
+    height: calc(100vh - 4rem);
+    background-color: lightgray;
+}
+
+.main_wrapper > div {
+    padding: 0;
+}
+
+/* CONTACTS SECTION STYLE */
+/* HEADER */
+
+.header_contacts {
+    padding: 0.4rem 0.8rem;
+}
+
+.profile_pic img{
+    height: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: contain;
+    object-position: center;
+    background-color: whitesmoke;
+}
+
+#profile_name {
+    align-self: center;
+    padding-left: 0.5rem;
+    font-weight: 700;
+}
+
+
+.header_icons {
+    gap: 8px;
+}
+.header_icons li {
+    color: var(--icons_color);
+}
+
+/* NOTIFICATION SECTION STYLE */
