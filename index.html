@@ -15,158 +15,132 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
 </head>
 <body>
-    <main>
-        <div class="container">
-            <div class="row main_wrapper">
-                <div class="col-4 contact_wrapper d-flex flex-column">
-                    <div class="header_contacts d-flex justify-content-between contacts_padding">
-                        <figure class="profile_pic d-flex align-content-center">
-                            <img src="./img/01.png" alt="profile pic">
-                            <p class="profile_name">
-                                Elia
-                            </p>
-                        </figure>
-                        <ul class="header_icons d-flex align-items-center">
-                            <li>
-                                <i class="bi bi-circle"></i>
-                            </li>
-                            <li>
-                                <i class="bi bi-chat-left-fill"></i>
-                            </li>
-                            <li>
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </li>
-                        </ul>
-                    </div>
+    <div id="root">
 
-                    <section class="notifications_wrapper  d-flex align-items-center">
-                        <div class="icon_notification_wrapper d-flex align-items-center justify-content-center">
-                            <i class="bi bi-bell-slash-fill"></i>
-                        </div>
-                        <div class="text_notification d-flex flex-column">
-                            <b>Ricevi notifiche dei nuovi messaggi</b>
-                            <a href="#">
-                                Attiva notifiche schermo
-                            </a>
-                        </div>
-                    </section>
-
-                    <section class="search d-flex">
-                        <button>
-                            <i class="bi bi-search"></i>
-                        </button>
-                        <input  type="text" name="search" id="search" placeholder="Search contact">
-                    </section>
-
-                    <ul class="contact_cards_wrapper d-flex flex-column flex-grow-1">
-                        <li class="contact_card d-flex align-items-start justify-content-start">
-                            <figure class="profile_pic">
-                                <img src="./img/02.png" alt="">
+        <main>
+            <div class="container">
+                <div class="row main_wrapper">
+                    <div class="col-4 contact_wrapper d-flex flex-column">
+                        <!-- contacts header -->
+                        <div class="header_contacts d-flex justify-content-between contacts_padding">
+                            <figure class="profile_pic d-flex align-content-center">
+                                <img src="./img/01.png" alt="profile pic">
+                                <p class="profile_name">
+                                    Elia
+                                </p>
                             </figure>
-                            <div class="text_card flex-grow-1">
-                                    <p class="profile_name">
-                                        Luis Amstrong
-                                    </p>
-                                    <p class="last_message__text ">
-                                        Ultimo messaggio inviato
-                                    </p>
-                            </div>
-                            <p class="time">
-                                12.30
-                            </p>
-                        </li>
-
-                        <li class="contact_card d-flex align-items-start justify-content-start">
-                            <figure class="profile_pic">
-                                <img src="./img/02.png" alt="">
-                            </figure>
-                            <div class="text_card flex-grow-1">
-                                    <p class="profile_name">
-                                        Luis Amstrong
-                                    </p>
-                                    <p class="last_message__text ">
-                                        Ultimo messaggio inviato
-                                    </p>
-                            </div>
-                            <p class="time">
-                                12.30
-                            </p>
-                        </li>
-
-                        <li class="contact_card d-flex align-items-start justify-content-start">
-                            <figure class="profile_pic">
-                                <img src="./img/02.png" alt="">
-                            </figure>
-                            <div class="text_card flex-grow-1">
-                                    <p class="profile_name">
-                                        Luis Amstrong
-                                    </p>
-                                    <p class="last_message__text ">
-                                        Ultimo messaggio inviato
-                                    </p>
-                            </div>
-                            <p class="time">
-                                12.30
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-
-
-
-                <section class="col flex-grow-1 chat_wrapper d-flex flex-column">
-                    <div class="chat_header d-flex">
-                        <figure class="profile_pic">
-                            <img src="./img/02.png" alt="">
-                        </figure>
-                        <div class="text_card flex-grow-1">
-                            <p class="profile_name">
-                                Luis Amstrong
-                            </p>
-                            <p class="last_access__text ">
-                                Ultimo accesso alle 12.30
-                            </p>
+                            <ul class="header_icons d-flex align-items-center">
+                                <li>
+                                    <i class="bi bi-circle"></i>
+                                </li>
+                                <li>
+                                    <i class="bi bi-chat-left-fill"></i>
+                                </li>
+                                <li>
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </li>
+                            </ul>
                         </div>
-                        <ul class="header_icons d-flex align-items-center">
-                            <li>
+                        
+                        <section class="notifications_wrapper  d-flex align-items-center">
+                            <div class="icon_notification_wrapper d-flex align-items-center justify-content-center">
+                                <i class="bi bi-bell-slash-fill"></i>
+                            </div>
+                            <div class="text_notification d-flex flex-column">
+                                <b>Ricevi notifiche dei nuovi messaggi</b>
+                                <a href="#">
+                                    Attiva notifiche schermo
+                                </a>
+                            </div>
+                        </section>
+                        
+                        <section class="search d-flex">
+                            <button>
                                 <i class="bi bi-search"></i>
+                            </button>
+                            <input  type="text" name="search" id="search" placeholder="Search contact">
+                        </section>
+                        
+                        <!-- contacts list -->
+                        <ul class="contact_cards_wrapper d-flex flex-column flex-grow-1">
+                            <li v-for="el in contacts" class="contact_card d-flex align-items-start justify-content-start">
+                                <figure class="profile_pic">
+                                    <img :src="el.pic" alt="">
+                                </figure>
+                                <div class="text_card flex-grow-1">
+                                    <p class="profile_name">
+                                        {{el.contact_name}}
+                                    </p>
+                                    <p class="last_message__text ">
+                                        Ultimo messaggio inviato
+                                    </p>
+                                </div>
+                                <p class="time">
+                                    12.30
+                                </p>
                             </li>
-                            <li>
-                                <i class="bi bi-paperclip"></i>
-                            </li>
-                            <li>
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </li>
+                            
                         </ul>
                     </div>
-                    <section class="chat_screen flex-grow-1">
-                        <ul class="row message_list flex-column">
-                            <li class="col-5 message sent">
-                                <div>
-                                    Ciao, come stai?
-                                </div>
-                                <div class="time">
-                                    12.30
-                                </div>
-                            </li>
-                            <li class="col-5 message recived">
-                                Tutto bene, tu?
-                                <div class="time">
-                                    12.30
-                                </div>
-                            </li>
-                        </ul>
-                    </section>
-                    <section class="chat_toolbar d-flex align-items-center">
-                        <i class="bi bi-emoji-smile"></i>
-                        <input class="flex-grow-1" type="text" name="message" id="message" placeholder="New message">
-                        <i class="bi bi-mic-fill"></i>
-                    </section>
-                </section>
-            </div>
-        </div>
-    </main>
+                    
+                    
+                    
+                    <section class="col flex-grow-1 chat_wrapper d-flex flex-column">
+                        
+                        <div class="chat_header d-flex">
+                            <figure class="profile_pic">
+                                <img src="./img/02.png" alt="">
+                            </figure>
+                            <div class="text_card flex-grow-1">
+                                <p class="profile_name">
+                                    Luis Amstrong
+                                </p>
+                                <p class="last_access__text ">
+                                    Ultimo accesso alle 12.30
+                                </p>
+                            </div>
+                            <ul class="header_icons d-flex align-items-center">
+                                <li>
+                                    <i class="bi bi-search"></i>
+                                </li>
+                                <li>
+                                    <i class="bi bi-paperclip"></i>
+                                </li>
+                                <li>
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </li>
+                            </ul>
+                        </div>
 
+                        <section class="chat_screen flex-grow-1">
+                            <ul class="row message_list flex-column">
+                                <li class="col-5 message sent">
+                                    <div>
+                                        Ciao, come stai?
+                                    </div>
+                                    <div class="time">
+                                        12.30
+                                    </div>
+                                </li>
+                                <li class="col-5 message recived">
+                                    Tutto bene, tu?
+                                    <div class="time">
+                                        12.30
+                                    </div>
+                                </li>
+                            </ul>
+                        </section>
+                        <section class="chat_toolbar d-flex align-items-center">
+                            <i class="bi bi-emoji-smile"></i>
+                            <input class="flex-grow-1" type="text" name="message" id="message" placeholder="New message">
+                            <i class="bi bi-mic-fill"></i>
+                        </section>
+                    </section>
+                </div>
+            </div>
+        </main>
+        
+    </div>
     <script src="./js/main.js"></script>
 </body>
 </html>
