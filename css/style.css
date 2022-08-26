@@ -4,6 +4,7 @@ html {
 
 :root {
     --icons_color: rgb(143, 142, 142);
+    --contacts_padding: 0.8rem;
 }
 
 ul,ol,menu {
@@ -14,6 +15,10 @@ ul,ol,menu {
 
 figure {
     margin: 0;
+}
+
+a {
+    color: currentColor;
 }
 
 main{
@@ -40,7 +45,7 @@ main p {
 /* HEADER */
 
 .header_contacts {
-    padding: 0.4rem 0.8rem;
+    padding: var(--contacts_padding);
 }
 
 .profile_pic img{
@@ -67,3 +72,59 @@ main p {
 }
 
 /* NOTIFICATION SECTION STYLE */
+
+.text_notification a {
+    color: gray;
+}
+
+.text_notification {
+    line-height: 1rem;
+    padding-left: 0.5rem;
+}
+
+.notifications_wrapper {
+    padding: var(--contacts_padding);
+}
+
+.notifications_wrapper {
+    background-color: skyblue;
+}
+
+.icon_notification_wrapper {
+    height: 40px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: whitesmoke;
+}
+
+.icon_notification_wrapper i {
+    color: skyblue;
+}
+
+/* SEARCH SECTION*/
+
+.search {
+    padding: var(--contacts_padding);
+}
+
+.search button {
+    flex-grow: 1;
+    color: var(--icons_color);
+    border: solid 1px var(--icons_color);
+    border-right: 0px;
+    padding: 0.5rem 0;
+}
+
+.search input {
+    flex-grow: 3;
+    border: solid 1px var(--icons_color);
+    padding-left: 0.5rem;
+}
+
+.search button,
+.search input {
+    background-color: whitesmoke;
+    border-collapse: collapse;
+}
+
+/* CONTACT CARDS */

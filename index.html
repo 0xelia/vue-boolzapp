@@ -18,8 +18,8 @@
     <main>
         <div class="container">
             <div class="row main_wrapper">
-                <div class="col-4 contact_wrapper">
-                    <div class="header_contacts d-flex justify-content-between">
+                <div class="col-4 contact_wrapper ">
+                    <div class="header_contacts d-flex justify-content-between contacts_padding">
                         <figure class="profile_pic d-flex align-content-center">
                             <img src="./img/01.png" alt="profile pic">
                             <p id="profile_name">
@@ -38,10 +38,33 @@
                             </li>
                         </ul>
                     </div>
-                    <section class="notifications_wrapper">
-                        
+
+                    <section class="notifications_wrapper  d-flex align-items-center">
+                        <div class="icon_notification_wrapper d-flex align-items-center justify-content-center">
+                            <i class="bi bi-bell-slash-fill"></i>
+                        </div>
+                        <div class="text_notification d-flex flex-column">
+                            <b>Ricevi notifiche dei nuovi messaggi</b>
+                            <a href="#">
+                                Attiva notifiche schermo
+                            </a>
+                        </div>
                     </section>
+
+                    <section class="search d-flex">
+                        <button>
+                            <i class="bi bi-search"></i>
+                        </button>
+                        <input  type="text" name="search" id="search" placeholder="Search contact">
+                    </section>
+
+                    <div class="section contact_cards_wrapper">
+                        
+                    </div>
                 </div>
+
+
+
                 <div class="col flex-grow-1 chat_wrapper">
                 </div>
             </div>
