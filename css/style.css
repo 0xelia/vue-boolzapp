@@ -201,3 +201,39 @@ main p {
     border: 0;
     box-shadow: none;
 }
+
+/* CHAT DISPLAY STYLE */
+
+/* .chat_screen {
+    padding: 0.8rem 2rem;
+} */
+
+.message_list {
+    padding: 0.8rem 4rem;
+    margin: 0;
+}
+
+.message {
+    padding: 0.5rem 0.8rem;
+    border-radius: 5px;
+    position: relative;
+}
+
+.sent {
+    align-self: flex-end;
+    background-color: rgb(153, 240, 153);
+    margin-bottom: 0.6rem;
+}
+
+.recived {
+    align-self: flex-start;
+    background-color: whitesmoke;
+}
+
+.chat_screen .time {
+    color: rgb(198, 198, 198);
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
+}
