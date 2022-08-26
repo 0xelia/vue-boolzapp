@@ -30,6 +30,7 @@ main{
 
 main p {
     margin: 0;
+    padding: 0;
 }
 
 .main_wrapper {
@@ -42,10 +43,13 @@ main p {
 }
 
 /* CONTACTS SECTION STYLE */
+
+
 /* HEADER */
 
 .header_contacts {
     padding: var(--contacts_padding);
+    border-right: solid 1px var(--icons_color);
 }
 
 .profile_pic img{
@@ -57,10 +61,11 @@ main p {
     background-color: whitesmoke;
 }
 
-#profile_name {
+.profile_name {
     align-self: center;
     padding-left: 0.5rem;
     font-weight: 700;
+    color: rgb(29, 29, 29);
 }
 
 
@@ -105,6 +110,7 @@ main p {
 
 .search {
     padding: var(--contacts_padding);
+    border-right: solid 1px var(--icons_color);
 }
 
 .search button {
@@ -128,3 +134,70 @@ main p {
 }
 
 /* CONTACT CARDS */
+.contact_cards_wrapper {
+    border-right: solid 1px var(--icons_color);
+    background-color: whitesmoke;
+}
+
+
+.contact_card{
+    background-color: whitesmoke;
+    color: lightgray;
+    border-top: solid rgb(183, 182, 182) 1px;
+    padding: var(--contacts_padding);
+}
+
+.last_message__text {
+    padding-left: 0.5rem;
+}
+
+/* CHAT COL STYLE */
+
+.chat_wrapper {
+    padding: 0;
+}
+
+.chat_header {
+    padding: var(--contacts_padding);
+}
+
+.chat_header .last_access__text {
+    line-height: 1rem;
+    color: #acacac;
+    padding-left: 0.5rem;
+}
+
+.chat_header .header_icons li {
+    font-size: 1.4rem;
+}
+.chat_header .header_icons :nth-child(2){
+    transform: rotate(-45deg);
+}
+
+.chat_screen {
+    background-image: url(https://imgs.search.brave.com/iSkx-sj9N8reIHnbdfPnOvOEhsHGNfKrhEQHxbeT88o/rs:fit:800:600:1/g:ce/aHR0cHM6Ly9jZG4u/ZHJpYmJibGUuY29t/L3VzZXJzLzY5MTU2/L3NjcmVlbnNob3Rz/LzIzOTg2ODAvaWNx/X3B0dHJuMy5wbmc);
+    background-size: cover;
+}
+
+
+.chat_toolbar {
+    background-color: lightgray;
+    color: var(--icons_color);
+    padding: var(--contacts_padding);
+    gap: 1.2rem;
+}
+
+.chat_toolbar i {
+    font-size: 1.4rem;
+}
+
+.chat_toolbar input {
+    border: 0;
+    border-radius: 5px;
+    padding: 0.8rem 0rem 0.8rem 1rem;
+}
+
+.chat_toolbar input:focus-visible {
+    border: 0;
+    box-shadow: none;
+}
