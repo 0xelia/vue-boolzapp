@@ -225,12 +225,12 @@ main p {
     padding: 0.5rem 0.8rem;
     border-radius: 5px;
     position: relative;
+    margin-bottom: 0.6rem;
 }
 
 .sent {
     align-self: flex-end;
     background-color: rgb(153, 240, 153);
-    margin-bottom: 0.6rem;
 }
 
 .received {

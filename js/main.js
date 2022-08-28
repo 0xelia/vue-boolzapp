@@ -189,6 +189,18 @@ const app = new Vue ({
                 }
             )
             this.newMessage = ''
+            this.getResponse()
+        },
+        getResponse(){
+            setTimeout(() => {
+                this.contacts[this.currentIndex].messages.push(
+                    {
+                    date:'',
+                    message: 'Ok fradi',
+                    status: 'received'
+                    })
+            },1000)
+            
         }
     },
 
