@@ -34,7 +34,8 @@ main p {
 }
 
 .main_wrapper {
-    height: calc(100vh - 4rem);
+    height: 100%;
+    width: 100%;
     background-color: lightgray;
 }
 
@@ -43,7 +44,9 @@ main p {
 }
 
 /* CONTACTS SECTION STYLE */
-
+.contact_wrapper {
+    overflow: scroll;
+}
 
 /* HEADER */
 
@@ -137,14 +140,19 @@ main p {
 .contact_cards_wrapper {
     border-right: solid 1px var(--icons_color);
     background-color: whitesmoke;
+    overflow: auto;
 }
 
 
 .contact_card{
     background-color: whitesmoke;
-    color: lightgray;
+    color: rgb(172, 170, 170);
     border-top: solid rgb(183, 182, 182) 1px;
     padding: var(--contacts_padding);
+}
+
+.contact_card.active {
+    background-color: lightgray;
 }
 
 .last_message__text {
@@ -225,7 +233,7 @@ main p {
     margin-bottom: 0.6rem;
 }
 
-.recived {
+.received {
     align-self: flex-start;
     background-color: whitesmoke;
 }

@@ -63,7 +63,10 @@
                         
                         <!-- contacts list -->
                         <ul class="contact_cards_wrapper d-flex flex-column flex-grow-1">
-                            <li v-for="el in contacts" class="contact_card d-flex align-items-start justify-content-start">
+                            <li v-for="(el, index) in contacts"  
+                            :class="['contact_card d-flex align-items-start justify-content-start', 
+                            el.active ? 'active' : '']" @click="actived(el)" >
+
                                 <figure class="profile_pic">
                                     <img :src="el.pic" alt="">
                                 </figure>
@@ -89,11 +92,11 @@
                         
                         <div class="chat_header d-flex">
                             <figure class="profile_pic">
-                                <img src="./img/02.png" alt="">
+                                <img :src="contacts[currentIndex].pic" alt="">
                             </figure>
                             <div class="text_card flex-grow-1">
                                 <p class="profile_name">
-                                    Luis Amstrong
+                                    {{ contacts[currentIndex].contact_name }}
                                 </p>
                                 <p class="last_access__text ">
                                     Ultimo accesso alle 12.30
@@ -114,16 +117,10 @@
 
                         <section class="chat_screen flex-grow-1">
                             <ul class="row message_list flex-column">
-                                <li class="col-5 message sent">
+                                <li v-for="el in contacts[currentIndex].messages" :class="['col-5 message', el.status === 'sent' ? 'sent' : 'received']">
                                     <div>
-                                        Ciao, come stai?
+                                        {{el.message}}
                                     </div>
-                                    <div class="time">
-                                        12.30
-                                    </div>
-                                </li>
-                                <li class="col-5 message recived">
-                                    Tutto bene, tu?
                                     <div class="time">
                                         12.30
                                     </div>
@@ -132,7 +129,7 @@
                         </section>
                         <section class="chat_toolbar d-flex align-items-center">
                             <i class="bi bi-emoji-smile"></i>
-                            <input class="flex-grow-1" type="text" name="message" id="message" placeholder="New message">
+                            <input class="flex-grow-1" type="text" v-model="newMessage" @keyup.enter="getMessage()" name="message" id="message" placeholder="New message">
                             <i class="bi bi-mic-fill"></i>
                         </section>
                     </section>

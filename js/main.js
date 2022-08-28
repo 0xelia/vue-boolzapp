@@ -1,52 +1,157 @@
 
 
-const contacts_list = [
+const contacts = [
     {
         contact_name: 'Louis Amstrong',
         pic: './img/02.png',
-        visible: true, 
+        visible: true,
+        active: true,
+        messages: [
+            {
+                date: '10/01/2022 15:30:15',
+                message: 'Ciao bellooo, come stai?',
+                status: 'sent'
+            },
+            {
+                date: '10/01/2022 15:30:20',
+                message: 'Tutto bene, e tu?',
+                status: 'received'
+            }
+        ]
+        
 
     },
     {
         contact_name: 'Valter per gli amici Water',
         pic: './img/03.png',
         visible: true, 
+        active: false,
+        messages: [
+            {
+                date: '10/01/2022 15:30:15',
+                message: 'Ciao come stai?',
+                status: 'sent'
+            },
+            {
+                date: '10/01/2022 15:30:20',
+                message: 'Tutto bene, e tu?',
+                status: 'received'
+            }
+        ]
 
     },
     {
         contact_name: 'Pippo Beggings',
         pic: './img/04.png',
         visible: true, 
+        active: false,
+        messages: [
+            {
+                date: '10/01/2022 15:30:15',
+                message: 'Ciao come stai?',
+                status: 'sent'
+            },
+            {
+                date: '10/01/2022 15:30:20',
+                message: 'Tutto bene, e tu?',
+                status: 'received'
+            }
+        ]
 
     },
     {
         contact_name: 'Ferry Potter',
         pic: './img/05.png',
         visible: true, 
+        active: false,
+        messages: [
+            {
+                date: '10/01/2022 15:30:15',
+                message: 'Ciao come stai?',
+                status: 'sent'
+            },
+            {
+                date: '10/01/2022 15:30:20',
+                message: 'Tutto bene, e tu?',
+                status: 'received'
+            }
+        ]
 
     },
     {
         contact_name: 'Jack Mi Sparo',
         pic: './img/06.png',
         visible: true, 
+        active: false,
+        messages: [
+            {
+                date: '10/01/2022 15:30:15',
+                message: 'Ciao come stai?',
+                status: 'sent'
+            },
+            {
+                date: '10/01/2022 15:30:20',
+                message: 'Tutto bene, e tu?',
+                status: 'received'
+            }
+        ]
 
     },
     {
         contact_name: 'Lady Ponte e un Quintale',
         pic: './img/07.png',
         visible: true, 
+        active: false,
+        messages: [
+            {
+                date: '10/01/2022 15:30:15',
+                message: 'Ciao come stai?',
+                status: 'sent'
+            },
+            {
+                date: '10/01/2022 15:30:20',
+                message: 'Tutto bene, e tu?',
+                status: 'received'
+            }
+        ]
 
     },
     {
         contact_name: 'Amstrong the trumpet',
         pic: './img/08.png',
         visible: true, 
+        active: false,
+        messages: [
+            {
+                date: '10/01/2022 15:30:15',
+                message: 'Ciao come stai?',
+                status: 'sent'
+            },
+            {
+                date: '10/01/2022 15:30:20',
+                message: 'Tutto bene, e tu?',
+                status: 'received'
+            }
+        ]
 
     },
     {
         contact_name: 'Tony Merlot',
         pic: './img/09.png',
         visible: true, 
+        active: false,
+        messages: [
+            {
+                date: '10/01/2022 15:30:15',
+                message: 'Ciao come stai?',
+                status: 'sent'
+            },
+            {
+                date: '10/01/2022 15:30:20',
+                message: 'Tutto bene, e tu?',
+                status: 'received'
+            }
+        ]
 
     }
 ]
@@ -54,9 +159,40 @@ const contacts_list = [
 const app = new Vue ({
     el: '#root',
     data: {
-        contacts: contacts_list,
+        contacts: contacts,
+        currentIndex: 0,
+        newMessage: ''
     },
+
+    computed: {
+        
+    },
+
+    methods: {
+        actived(el){
+            this.contacts.forEach((contact, i) => {
+                contact.active = false
+                el.active = true
+                this.getCurrentIndex(el)
+            });
+        },
+        getCurrentIndex(el) {
+            this.currentIndex = this.contacts.indexOf(el)
+            console.log(this.currentIndex)
+        },
+        getMessage(){
+            this.contacts[this.currentIndex].messages.push(
+                {
+                date:'',
+                message: this.newMessage,
+                status: 'sent'
+                }
+            )
+            this.newMessage = ''
+        }
+    },
+
     mounted(){
-        console.log(this)
+        
     }
 })
