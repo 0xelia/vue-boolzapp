@@ -161,7 +161,9 @@ const app = new Vue ({
     data: {
         contacts: contacts,
         currentIndex: 0,
-        newMessage: ''
+        newMessage: '',
+        searchedContact:'',
+        contactsFiltered: []
     },
 
     computed: {
@@ -201,6 +203,14 @@ const app = new Vue ({
                     })
             },1000)
             
+        },
+        filterContact(){
+            let contactsName = []
+            contacts.forEach(contact => {
+                console.log(contact.contact_name.filter(names =>{
+                    names === this.searchedContact
+                }))
+            })
         }
     },
 

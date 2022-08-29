@@ -20,7 +20,7 @@
         <main>
             <div class="container">
                 <div class="row main_wrapper">
-                    <div class="col-4 contact_wrapper d-flex flex-column">
+                    <div class="col-4 contact_wrapper flex-shrink-1 d-flex flex-column">
                         <!-- contacts header -->
                         <div class="header_contacts d-flex justify-content-between contacts_padding">
                             <figure class="profile_pic d-flex align-content-center">
@@ -55,38 +55,42 @@
                         </section>
                         
                         <section class="search d-flex">
-                            <button>
+                            <button @click="filterContact()">
                                 <i class="bi bi-search"></i>
                             </button>
-                            <input  type="text" name="search" id="search" placeholder="Search contact">
+                            <input  v-model="searchedContact" type="text" name="search" id="search" placeholder="Search contact">
+                            <div>
+                                {{searchedContact}}
+                            </div>
                         </section>
+
                         
                         <!-- contacts list -->
                         <ul class="contact_cards_wrapper d-flex flex-column flex-grow-1">
-                            <li v-for="(el, index) in contacts"  
-                            :class="['contact_card d-flex align-items-start justify-content-start', 
-                            el.active ? 'active' : '']" @click="actived(el)" >
-
-                                <figure class="profile_pic">
-                                    <img :src="el.pic" alt="">
-                                </figure>
-                                <div class="text_card flex-grow-1">
-                                    <p class="profile_name">
-                                        {{el.contact_name}}
+                            <template v-for="(el, index) in contacts">
+                                <li v-if="el.contact_name.toLowerCase().includes(searchedContact.toLowerCase())" 
+                                :class="['contact_card d-flex align-items-start justify-content-start', 
+                                el.active ? 'active' : '']" @click="actived(el)" >
+                                
+                                    <figure class="profile_pic">
+                                        <img :src="el.pic" alt="">
+                                    </figure>
+                                    <div class="text_card flex-grow-1">
+                                        <p class="profile_name">
+                                            {{el.contact_name}}
+                                        </p>
+                                        <p class="last_message__text ">
+                                            Ultimo messaggio inviato
+                                        </p>
+                                    </div>
+                                    <p class="time">
+                                        12.30
                                     </p>
-                                    <p class="last_message__text ">
-                                        Ultimo messaggio inviato
-                                    </p>
-                                </div>
-                                <p class="time">
-                                    12.30
-                                </p>
-                            </li>
+                                </li>
+                            </template>
                             
                         </ul>
                     </div>
-                    
-                    
                     
                     <section class="col flex-grow-1 chat_wrapper d-flex flex-column">
                         
@@ -116,8 +120,8 @@
                         </div>
 
                         <section class="chat_screen flex-grow-1">
-                            <ul class="row message_list flex-column">
-                                <li v-for="el in contacts[currentIndex].messages" :class="['col-5 message', el.status === 'sent' ? 'sent' : 'received']">
+                            <ul class="d-flex message_list flex-column">
+                                <li v-for="el in contacts[currentIndex].messages" :class="['message', el.status === 'sent' ? 'sent' : 'received']">
                                     <div>
                                         {{el.message}}
                                     </div>
