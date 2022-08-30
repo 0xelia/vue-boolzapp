@@ -59,19 +59,17 @@
                                 <i class="bi bi-search"></i>
                             </button>
                             <input  v-model="searchedContact" type="text" name="search" id="search" placeholder="Search contact">
-                            <div>
-                                {{searchedContact}}
-                            </div>
+
                         </section>
 
                         
                         <!-- contacts list -->
                         <ul class="contact_cards_wrapper d-flex flex-column flex-grow-1">
+                            
                             <template v-for="(el, index) in contacts">
-                                <li v-if="el.contact_name.toLowerCase().includes(searchedContact.toLowerCase())" 
+                                <li v-if="el.contact_name.toLowerCase().includes(searchedContact.toLowerCase())"
                                 :class="['contact_card d-flex align-items-start justify-content-start', 
                                 el.active ? 'active' : '']" @click="actived(el)" >
-                                
                                     <figure class="profile_pic">
                                         <img :src="el.pic" alt="">
                                     </figure>

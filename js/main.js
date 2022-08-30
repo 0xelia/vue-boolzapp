@@ -163,11 +163,7 @@ const app = new Vue ({
         currentIndex: 0,
         newMessage: '',
         searchedContact:'',
-        contactsFiltered: []
-    },
-
-    computed: {
-        
+        display: false
     },
 
     methods: {
@@ -178,32 +174,45 @@ const app = new Vue ({
                 this.getCurrentIndex(el)
             });
         },
+
         getCurrentIndex(el) {
             this.currentIndex = this.contacts.indexOf(el)
             console.log(this.currentIndex)
         },
+
         getMessage(){
-            this.contacts[this.currentIndex].messages.push(
-                {
-                date:'',
-                message: this.newMessage,
-                status: 'sent'
-                }
-            )
-            this.newMessage = ''
-            this.getResponse()
-        },
-        getResponse(){
-            setTimeout(() => {
+            if(this.newMessage.trim() !== ''){
+                const activeChat = this.currentIndex
+
                 this.contacts[this.currentIndex].messages.push(
+                    {
+                    date:'',
+                    message: this.newMessage,
+                    status: 'sent'
+                    }
+                )
+                console.log(activeChat)
+                this.newMessage = ''
+                this.getResponse(activeChat)
+            } else {
+                this.newMessage = ''
+            }
+        },
+
+        getResponse(activeChat){
+            setTimeout(() => {
+                this.contacts[activeChat].messages.push(
                     {
                     date:'',
                     message: 'Ok fradi',
                     status: 'received'
                     })
+
+                    console.log(activeChat)
             },1000)
             
         },
+
         filterContact(){
             let contactsName = []
             contacts.forEach(contact => {

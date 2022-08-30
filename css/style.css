@@ -25,7 +25,7 @@ main{
     padding: 2rem 0;
     height: 100vh;
     background: rgb(55,201,69);
-    background: linear-gradient(180deg, #04a784 15%, rgba(219,219,219,1) 15%);
+    background: linear-gradient(180deg, #04a784 70px, rgba(219,219,219,1) 15%);
 }
 
 main p {
@@ -34,7 +34,7 @@ main p {
 }
 
 .main_wrapper {
-    height: 100%;
+    height: calc(100vh - 4rem);
     width: 100%;
     background-color: lightgray;
 }
@@ -184,7 +184,7 @@ main p {
 
 .chat_screen {
     background-image: url(https://imgs.search.brave.com/iSkx-sj9N8reIHnbdfPnOvOEhsHGNfKrhEQHxbeT88o/rs:fit:800:600:1/g:ce/aHR0cHM6Ly9jZG4u/ZHJpYmJibGUuY29t/L3VzZXJzLzY5MTU2/L3NjcmVlbnNob3Rz/LzIzOTg2ODAvaWNx/X3B0dHJuMy5wbmc);
-    background-size: cover;
+    background-attachment: fixed;
 }
 
 
@@ -211,10 +211,6 @@ main p {
 }
 
 /* CHAT DISPLAY STYLE */
-
-/* .chat_screen {
-    padding: 0.8rem 2rem;
-} */
 
 .message_list {
     padding: 0.8rem 4rem;
