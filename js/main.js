@@ -10,12 +10,16 @@ const contacts = [
             {
                 date: '10/01/2022 15:30:15',
                 message: 'Ciao bellooo, come stai?',
-                status: 'sent'
+                status: 'sent',
+                display_info: false,
+                delete_message: false
             },
             {
                 date: '10/01/2022 15:30:20',
                 message: 'Tutto bene, e tu?',
-                status: 'received'
+                status: 'received',
+                display_info: false,
+                delete_message: false
             }
         ]
         
@@ -30,12 +34,16 @@ const contacts = [
             {
                 date: '10/01/2022 15:30:15',
                 message: 'Ciao come stai?',
-                status: 'sent'
+                status: 'sent',
+                display_info: false,
+                delete_message: false
             },
             {
                 date: '10/01/2022 15:30:20',
                 message: 'Tutto bene, e tu?',
-                status: 'received'
+                status: 'received',
+                display_info: false,
+                delete_message: false
             }
         ]
 
@@ -49,12 +57,16 @@ const contacts = [
             {
                 date: '10/01/2022 15:30:15',
                 message: 'Ciao come stai?',
-                status: 'sent'
+                status: 'sent',
+                display_info: false,
+                delete_message: false
             },
             {
                 date: '10/01/2022 15:30:20',
                 message: 'Tutto bene, e tu?',
-                status: 'received'
+                status: 'received',
+                display_info: false,
+                delete_message: false
             }
         ]
 
@@ -68,12 +80,16 @@ const contacts = [
             {
                 date: '10/01/2022 15:30:15',
                 message: 'Ciao come stai?',
-                status: 'sent'
+                status: 'sent',
+                display_info: false,
+                delete_message: false
             },
             {
                 date: '10/01/2022 15:30:20',
                 message: 'Tutto bene, e tu?',
-                status: 'received'
+                status: 'received',
+                display_info: false,
+                delete_message: false
             }
         ]
 
@@ -87,12 +103,16 @@ const contacts = [
             {
                 date: '10/01/2022 15:30:15',
                 message: 'Ciao come stai?',
-                status: 'sent'
+                status: 'sent',
+                display_info: false,
+                delete_message: false
             },
             {
                 date: '10/01/2022 15:30:20',
                 message: 'Tutto bene, e tu?',
-                status: 'received'
+                status: 'received',
+                display_info: false,
+                delete_message: false
             }
         ]
 
@@ -106,12 +126,16 @@ const contacts = [
             {
                 date: '10/01/2022 15:30:15',
                 message: 'Ciao come stai?',
-                status: 'sent'
+                status: 'sent',
+                display_info: false,
+                delete_message: false
             },
             {
                 date: '10/01/2022 15:30:20',
                 message: 'Tutto bene, e tu?',
-                status: 'received'
+                status: 'received',
+                display_info: false,
+                delete_message: false
             }
         ]
 
@@ -125,12 +149,16 @@ const contacts = [
             {
                 date: '10/01/2022 15:30:15',
                 message: 'Ciao come stai?',
-                status: 'sent'
+                status: 'sent',
+                display_info: false,
+                delete_message: false
             },
             {
                 date: '10/01/2022 15:30:20',
                 message: 'Tutto bene, e tu?',
-                status: 'received'
+                status: 'received',
+                display_info: false,
+                delete_message: false
             }
         ]
 
@@ -144,12 +172,16 @@ const contacts = [
             {
                 date: '10/01/2022 15:30:15',
                 message: 'Ciao come stai?',
-                status: 'sent'
+                status: 'sent',
+                display_info: false,
+                delete_message: false
             },
             {
                 date: '10/01/2022 15:30:20',
                 message: 'Tutto bene, e tu?',
-                status: 'received'
+                status: 'received',
+                display_info: false,
+                delete_message: false
             }
         ]
 
@@ -161,9 +193,9 @@ const app = new Vue ({
     data: {
         contacts: contacts,
         currentIndex: 0,
+        messageSelected: null,
         newMessage: '',
         searchedContact:'',
-        display: false
     },
 
     methods: {
@@ -188,7 +220,9 @@ const app = new Vue ({
                     {
                     date:'',
                     message: this.newMessage,
-                    status: 'sent'
+                    status: 'sent',
+                    display_info: false,
+                    delete_message: false
                     }
                 )
                 console.log(activeChat)
@@ -205,7 +239,9 @@ const app = new Vue ({
                     {
                     date:'',
                     message: 'Ok fradi',
-                    status: 'received'
+                    status: 'received',
+                    display_info: false,
+                    delete_message: false
                     })
 
                     console.log(activeChat)
@@ -213,17 +249,18 @@ const app = new Vue ({
             
         },
 
-        filterContact(){
-            let contactsName = []
-            contacts.forEach(contact => {
-                console.log(contact.contact_name.filter(names =>{
-                    names === this.searchedContact
-                }))
+        getInfo(el){
+            this.contacts[this.currentIndex].messages.forEach(message => {
+                message.display_info = false
             })
+            el.display_info = true
+        },
+        deleteMessage(el){
+            el.delete_message = true
         }
     },
 
     mounted(){
-        
+            
     }
 })

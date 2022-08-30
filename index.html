@@ -65,7 +65,7 @@
                         
                         <!-- contacts list -->
                         <ul class="contact_cards_wrapper d-flex flex-column flex-grow-1">
-                            
+
                             <template v-for="(el, index) in contacts">
                                 <li v-if="el.contact_name.toLowerCase().includes(searchedContact.toLowerCase())"
                                 :class="['contact_card d-flex align-items-start justify-content-start', 
@@ -119,14 +119,30 @@
 
                         <section class="chat_screen flex-grow-1">
                             <ul class="d-flex message_list flex-column">
-                                <li v-for="el in contacts[currentIndex].messages" :class="['message', el.status === 'sent' ? 'sent' : 'received']">
-                                    <div>
-                                        {{el.message}}
-                                    </div>
-                                    <div class="time">
-                                        12.30
-                                    </div>
-                                </li>
+
+                                <template v-for="(el, i) in contacts[currentIndex].messages">
+                                    <li v-if="!el.delete_message" :class="['message', el.status === 'sent' ? 'sent' : 'received']">
+                                        <div>
+                                            {{el.message}}
+                                        </div>
+                                        <div class="message_info">
+                                            <i class="bi bi-chevron-down" @click="getInfo(el)"></i>
+                                            <ul v-if="el.display_info" class="info_list">
+                                                <li>
+                                                    Message Info
+                                                </li>
+                                                <li @click="deleteMessage(el)">
+                                                    Delete Message
+                                                </li>
+                                            </ul>
+                                        </div>
+    
+                                        <div class="time">
+                                            12.30
+                                        </div>
+                                    </li>
+                                </template>
+
                             </ul>
                         </section>
                         <section class="chat_toolbar d-flex align-items-center">
