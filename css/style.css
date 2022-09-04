@@ -41,11 +41,13 @@ main p {
 
 .main_wrapper > div {
     padding: 0;
+    height: 100%;
 }
 
 /* CONTACTS SECTION STYLE */
 .contact_wrapper {
-    
+    flex-shrink: 0;
+    flex-basis: 320px;
 }
 
 /* HEADER */
@@ -184,7 +186,7 @@ main p {
 
 .chat_screen {
     background-image: url(https://imgs.search.brave.com/iSkx-sj9N8reIHnbdfPnOvOEhsHGNfKrhEQHxbeT88o/rs:fit:800:600:1/g:ce/aHR0cHM6Ly9jZG4u/ZHJpYmJibGUuY29t/L3VzZXJzLzY5MTU2/L3NjcmVlbnNob3Rz/LzIzOTg2ODAvaWNx/X3B0dHJuMy5wbmc);
-    background-attachment: fixed;
+
 }
 
 
@@ -213,7 +215,7 @@ main p {
 /* CHAT DISPLAY STYLE */
 
 .message_list {
-    padding: 0.8rem 4rem;
+    padding: 0.8rem 2vw;
     margin: 0;
 }
 
@@ -223,6 +225,7 @@ main p {
     border-radius: 5px;
     position: relative;
     margin-bottom: 0.6rem;
+    transition: all ease-in-out 300ms;
 }
 
 .message_info i {

@@ -196,27 +196,39 @@ const app = new Vue ({
         messageSelected: null,
         newMessage: '',
         searchedContact:'',
+        activeChat: 0
+    },
+
+    computed:{
+        contactFilter(){
+            return this.contacts.filter((el) =>{
+                const {contact_name} = el
+
+                if(contact_name.toLowerCase().includes(this.searchedContact.toLowerCase())){
+                    return true
+                }
+                return false
+            })
+        },
     },
 
     methods: {
-        actived(el){
+        actived(el, index){
             this.contacts.forEach((contact, i) => {
                 contact.active = false
                 el.active = true
-                this.getCurrentIndex(el)
             });
-        },
-
-        getCurrentIndex(el) {
-            this.currentIndex = this.contacts.indexOf(el)
+            this.getActiveChat(el)
+            this.currentIndex = index
             console.log(this.currentIndex)
+        },
+        getActiveChat(el){
+            this.activeChat = el
         },
 
         getMessage(){
             if(this.newMessage.trim() !== ''){
-                const activeChat = this.currentIndex
-
-                this.contacts[this.currentIndex].messages.push(
+                this.activeChat.messages.push(
                     {
                     date:'',
                     message: this.newMessage,
@@ -225,17 +237,18 @@ const app = new Vue ({
                     delete_message: false
                     }
                 )
-                console.log(activeChat)
                 this.newMessage = ''
-                this.getResponse(activeChat)
+                this.getResponse(this.activeChat)
             } else {
                 this.newMessage = ''
             }
+
+            console.log(this.activeChat.messages)
         },
 
-        getResponse(activeChat){
+        getResponse(currentChat){
             setTimeout(() => {
-                this.contacts[activeChat].messages.push(
+                currentChat.messages.push(
                     {
                     date:'',
                     message: 'Ok fradi',
@@ -243,24 +256,26 @@ const app = new Vue ({
                     display_info: false,
                     delete_message: false
                     })
-
-                    console.log(activeChat)
             },1000)
-            
+        },
+        lastMessageOf(chat){
+            const lastIndex = chat.messages.length - 1
+
+            if(lastIndex >= 0){
+                return chat.messages[lastIndex]
+            }
         },
 
-        getInfo(el){
-            this.contacts[this.currentIndex].messages.forEach(message => {
-                message.display_info = false
-            })
-            el.display_info = true
+        getInfo(el, i){
+            el.display_info = !el.display_info
         },
         deleteMessage(el){
             el.delete_message = true
-        }
+            console.log(this.activeChat.messages)
+        },
     },
 
-    mounted(){
-            
+    mounted(){  
+
     }
 })
